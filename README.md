@@ -25,6 +25,22 @@ python3 -m http.server 8080
 - GitHub Pages: Push to a repo and enable Pages (root folder). 
 - Netlify/Vercel: Drag-and-drop the folder or connect the repo (no build needed).
 
+### Deploy on Render (Static Site)
+This repo includes `render.yaml` for one-click deploys on Render.
+
+Steps:
+1. Commit and push this folder to a Git repository (GitHub/GitLab/Bitbucket).
+2. Create a new Static Site on Render and select your repo, or click "New +" → "Blueprint" and point to the repo containing `render.yaml`.
+3. Ensure settings detect:
+   - Type: Static
+   - Build command: empty (no build)
+   - Publish directory: `.`
+4. Deploy. Render will serve the site from the root and cache assets under `assets/` per headers in `render.yaml`.
+
+Notes:
+- Custom domain can be configured in Render → Settings → Custom Domains.
+- Update `render.yaml` to change the service name or headers.
+
 ## SEO & Accessibility
 - Includes semantic HTML, meta tags, and JSON-LD Person schema.
 - Mobile-first, accessible labels, and ARIA roles for dynamic status.
