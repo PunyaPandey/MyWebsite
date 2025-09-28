@@ -1,7 +1,6 @@
 services:
-  - type: static
+  - type: static_site
     name: punya-portfolio
-    env: static
     buildCommand: ""
     staticPublishPath: .
     pullRequestPreviewsEnabled: true
