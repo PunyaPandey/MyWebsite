@@ -6,7 +6,7 @@
   <title>Punya Parashar Pandey | Azure & EDI Integration Specialist</title>
   <meta name="description" content="Azure Integration Developer specializing in Logic Apps, Event Grid, and EDI (X12/EDIFACT). Transforming how enterprises connect." />
   
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -40,7 +40,9 @@
             Bridging the gap between Salesforce, SAP, and Snowflake.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#projects">View My Work</a>
+            <button class="btn btn-primary" onclick="toggleChat()">
+              <i class="fas fa-sparkles"></i> Ask Punya AI
+            </button>
             <a class="btn btn-outline" href="assets/Punya_Parashar_Pandey_Resume.pdf" download>
               <i class="fas fa-download"></i> Resume
             </a>
@@ -82,7 +84,6 @@
       <div class="container">
         <h2 class="section-title">Technical Arsenal</h2>
         <div class="skills-wrapper">
-          
           <div class="skill-category" data-reveal="up">
             <h3><i class="fab fa-microsoft"></i> Azure Core</h3>
             <div class="skill-bar">
@@ -98,7 +99,6 @@
               <div class="bar"><div class="fill" style="width:80%"></div></div>
             </div>
           </div>
-
           <div class="skill-category" data-reveal="up" data-delay="200">
             <h3><i class="fas fa-network-wired"></i> EDI & Protocols</h3>
             <div class="tags-cloud">
@@ -110,7 +110,6 @@
               <span>Event Grid</span>
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -119,7 +118,6 @@
       <div class="container">
         <h2 class="section-title">Professional Journey</h2>
         <div class="timeline">
-          
           <div class="timeline-item" data-reveal="left">
             <div class="timeline-date">Sep 2022 - Present</div>
             <div class="timeline-content card">
@@ -133,7 +131,6 @@
               </ul>
             </div>
           </div>
-
           <div class="timeline-item" data-reveal="left">
             <div class="timeline-date">2022</div>
             <div class="timeline-content card">
@@ -142,7 +139,6 @@
               <p class="role-desc">Foundation in systems logic and engineering principles.</p>
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -151,44 +147,24 @@
       <div class="container">
         <h2 class="section-title">Featured Deployments</h2>
         <div class="project-grid">
-          
           <article class="project-card" data-reveal="up">
             <div class="card-icon"><i class="fas fa-sync"></i></div>
             <h3>Salesforce ↔ SAP Sync</h3>
-            <p>Designed workflows to synchronize Customer Master Data and Orders. Utilized API Management for secure exposure and automated reconciliation.</p>
-            <div class="tech-stack">
-              <span>Logic Apps</span><span>APIM</span><span>SAP</span>
-            </div>
+            <p>Designed workflows to synchronize Customer Master Data and Orders. Utilized API Management for secure exposure.</p>
+            <div class="tech-stack"><span>Logic Apps</span><span>APIM</span><span>SAP</span></div>
           </article>
-
           <article class="project-card" data-reveal="up" data-delay="100">
             <div class="card-icon"><i class="fas fa-bolt"></i></div>
             <h3>Real-Time Data Pipeline</h3>
-            <p>Event-driven architecture connecting Snowflake to Salesforce. Replaced polling with Azure Event Grid and Functions for near real-time analytics.</p>
-            <div class="tech-stack">
-              <span>Event Grid</span><span>Snowflake</span><span>Functions</span>
-            </div>
+            <p>Event-driven architecture connecting Snowflake to Salesforce using Azure Event Grid and Functions.</p>
+            <div class="tech-stack"><span>Event Grid</span><span>Snowflake</span><span>Functions</span></div>
           </article>
-
           <article class="project-card" data-reveal="up" data-delay="200">
             <div class="card-icon"><i class="fas fa-file-invoice"></i></div>
             <h3>EDI Transformation Framework</h3>
-            <p>Built a reusable XSLT/AS2 framework for logistics. Standardized partner onboarding, reducing development time by 40%.</p>
-            <div class="tech-stack">
-              <span>AS2</span><span>XSLT</span><span>Azure Storage</span>
-            </div>
+            <p>Built a reusable XSLT/AS2 framework for logistics. Standardized partner onboarding time by 40%.</p>
+            <div class="tech-stack"><span>AS2</span><span>XSLT</span><span>Azure Storage</span></div>
           </article>
-
-        </div>
-      </div>
-    </section>
-
-    <section id="certifications" class="section">
-      <div class="container text-center">
-        <h2>Certified Expertise</h2>
-        <div class="cert-badges">
-          <div class="badge"><i class="fab fa-microsoft"></i> Azure Developer Associate (AZ-204)</div>
-          <div class="badge"><i class="fab fa-microsoft"></i> Azure Fundamentals (AZ-900)</div>
         </div>
       </div>
     </section>
@@ -210,9 +186,36 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p>© <span id="year"></span> Punya Parashar Pandey. Built with Azure logic (and some HTML/CSS).</p>
+      <p>© <span id="year"></span> Punya Parashar Pandey. Built with Azure logic.</p>
     </div>
   </footer>
+
+  <div class="chat-widget-container">
+    <button id="chat-toggle-btn" class="chat-toggle-btn" aria-label="Open AI Assistant">
+      <i class="fas fa-sparkles"></i>
+    </button>
+
+    <div id="chat-window" class="chat-window hidden">
+      <div class="chat-header">
+        <div class="chat-title">
+          <i class="fas fa-robot"></i>
+          <span>Punya AI Assistant</span>
+        </div>
+        <button id="chat-close-btn" class="chat-close-btn">&times;</button>
+      </div>
+      
+      <div id="chat-messages" class="chat-messages">
+        <div class="message bot-message">
+          Hello! I'm an AI trained on Punya's resume. Ask me about his <strong>Azure skills</strong>, <strong>EDI projects</strong>, or <strong>experience at TCS</strong>!
+        </div>
+      </div>
+
+      <div class="chat-input-area">
+        <input type="text" id="chat-input" placeholder="Ask me something..." autocomplete="off">
+        <button id="chat-send-btn"><i class="fas fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
