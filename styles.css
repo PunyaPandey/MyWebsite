@@ -206,3 +206,77 @@ h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing:
   .site-nav ul { display: none; }
   .chat-window { width: 90vw; right: 5vw; bottom: 80px; }
 }
+
+/* --- NEW: Video Section Styles --- */
+.video-section {
+  background: var(--primary); /* Dark Navy background for contrast */
+  color: #fff;
+}
+
+.video-section .section-title {
+  color: #fff;
+}
+
+.video-section .lead {
+  color: #94a3b8; /* Lighter text for description */
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #000;
+}
+
+.video-container video {
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0.8; /* Slightly dim by default */
+  transition: opacity 0.3s ease;
+}
+
+.video-container:hover video,
+.video-container.playing video {
+  opacity: 1; /* Brighten when playing or hovered */
+}
+
+/* Play Button Overlay */
+.video-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none; /* Let clicks pass through to video/JS */
+  transition: opacity 0.3s ease;
+}
+
+.video-container.playing .video-overlay {
+  opacity: 0; /* Hide button when playing */
+}
+
+.btn-play {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.9); /* Accent color */
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
+  70% { transform: scale(1.1); box-shadow: 0 0 0 15px rgba(59, 130, 246, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+}
