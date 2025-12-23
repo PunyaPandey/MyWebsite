@@ -62,7 +62,43 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   counters.forEach(counter => countObserver.observe(counter));
 
-  // --- 4. MOBILE NAV ---
+  // --- 4. VIDEO SCROLL OBSERVER (NEW) ---
+  const videoSection = document.querySelector('#video-showcase');
+  const videoElement = document.querySelector('#scroll-video');
+  const videoContainer = document.querySelector('.video-container');
+
+  if (videoSection && videoElement) {
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        // Play when 50% of the section is visible
+        if (entry.isIntersecting) {
+          videoElement.play().then(() => {
+            videoContainer.classList.add('playing');
+          }).catch(err => {
+            console.log("Autoplay prevented by browser policy:", err);
+          });
+        } else {
+          videoElement.pause();
+          videoContainer.classList.remove('playing');
+        }
+      });
+    }, { threshold: 0.5 }); 
+
+    videoObserver.observe(videoSection);
+    
+    // Manual toggle on click
+    videoContainer.addEventListener('click', () => {
+      if (videoElement.paused) {
+        videoElement.play();
+        videoContainer.classList.add('playing');
+      } else {
+        videoElement.pause();
+        videoContainer.classList.remove('playing');
+      }
+    });
+  }
+
+  // --- 5. MOBILE NAV ---
   const navToggle = document.querySelector('.nav-toggle');
   const navList = document.querySelector('.site-nav ul');
   if(navToggle) {
@@ -87,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =======================================================
-  // 5. GEMINI FEATURE: INTEGRATED KNOWLEDGE GRAPH
+  // 6. GEMINI FEATURE: INTEGRATED KNOWLEDGE GRAPH
   // =======================================================
   
   // The "Brain" - Your provided dataset
